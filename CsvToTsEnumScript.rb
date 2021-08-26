@@ -1,14 +1,10 @@
-def CsvToTsEnum(csv, linesToSkip) 
-  puts "#{csv}:"
-  puts "#{linesToSkip}"
+def CsvToTsEnum(csv, linesToSkip = 0)
   name = File.basename(csv, ".*")
   open("#{name}.ts", 'w') do |f|
     f.puts "export enum #{name} {"
     open(csv).each do |line|
       if $. > linesToSkip.to_i
         lineValues = line.split(';', -1)
-        puts lineValues
-        puts lineValues.length
         FormatKey(lineValues[1])
         f.puts "#{lineValues[1]} = #{FormatValue(lineValues[2])},"
       end
