@@ -1,4 +1,4 @@
 export enum example {
-New = "N",
+New = "4",
 UsedOld = "U",
 }
